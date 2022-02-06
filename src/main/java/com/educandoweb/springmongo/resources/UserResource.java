@@ -1,6 +1,8 @@
 package com.educandoweb.springmongo.resources;
 
 import com.educandoweb.springmongo.domain.User;
+import com.educandoweb.springmongo.services.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,13 +16,12 @@ import java.util.List;
 @RequestMapping(value = "/users")
 public class UserResource {
 
+    @Autowired
+    private UserService service;
+
     @GetMapping
     public ResponseEntity<List<User>> findAll(){
-        User u1 = new User("1","Mauricio","mro@gmail.com");
-        User u2 = new User("2","Clarisse","cissa@hotmail.com");
-        List<User> list = new ArrayList<>();
-        list.addAll(Arrays.asList(u1,u2));
-        return ResponseEntity.ok().body(list);
+        return ResponseEntity.ok().body(service.findAll());
     }
 
 }
