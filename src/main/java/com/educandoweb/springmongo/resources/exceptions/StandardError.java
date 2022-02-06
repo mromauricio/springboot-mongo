@@ -1,7 +1,5 @@
 package com.educandoweb.springmongo.resources.exceptions;
 
-import org.springframework.http.HttpStatus;
-
 import java.io.Serializable;
 
 public class StandardError  implements Serializable {
@@ -13,7 +11,7 @@ public class StandardError  implements Serializable {
     private String message;
     private String path;
 
-    public StandardError(long l, HttpStatus status, String msg, String requestURI){}
+    public StandardError(){}
 
     public StandardError(Long timestamp, Integer status, String error, String message, String path) {
         this.timestamp = timestamp;
