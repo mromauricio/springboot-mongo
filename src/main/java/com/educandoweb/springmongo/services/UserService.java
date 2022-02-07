@@ -34,6 +34,17 @@ public class UserService {
         repository.deleteById(id);
     }
 
+    public void updateData(User obj, User existObj){
+        existObj.setName(obj.getName());
+        existObj.setEmail(obj.getEmail());
+    }
+
+    public User update(User obj){
+        User existObj = findById(obj.getId());
+        updateData(obj, existObj);
+        return repository.save(existObj);
+    }
+
     public User fromDTO(UserDTO objDto){
         return new User(objDto.getId(), objDto.getName(), objDto.getEmail());
     }
