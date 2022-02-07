@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import javax.servlet.http.HttpServletRequest;
+import java.time.Instant;
 
 @ControllerAdvice
 public class ResourceExceptionHandler {
@@ -15,7 +16,7 @@ public class ResourceExceptionHandler {
     public ResponseEntity<StandardError> objectNotFound(ObjectNotFoundException e, HttpServletRequest request){
         String msg = "Object not found";
         HttpStatus status = HttpStatus.NOT_FOUND;
-        StandardError err = new StandardError(System.currentTimeMillis(), status.value(), msg, e.getMessage(), request.getRequestURI());
+        StandardError err = new StandardError(Instant.now(), status.value(), msg, e.getMessage(), request.getRequestURI());
         return ResponseEntity.status(status).body(err);
     }
 }
