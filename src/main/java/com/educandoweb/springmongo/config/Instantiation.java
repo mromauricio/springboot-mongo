@@ -3,6 +3,7 @@ package com.educandoweb.springmongo.config;
 import com.educandoweb.springmongo.domain.Post;
 import com.educandoweb.springmongo.domain.User;
 import com.educandoweb.springmongo.dto.AuthorDTO;
+import com.educandoweb.springmongo.dto.CommentDTO;
 import com.educandoweb.springmongo.respositories.PostRepository;
 import com.educandoweb.springmongo.respositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,13 @@ public class Instantiation implements CommandLineRunner {
 
         Post p1 = new Post(null, sdf.parse("08/02/2022"), "Partiu viagem","Vou viajar para São Paulo. Abraços!",new AuthorDTO(u1));
         Post p2 = new Post(null, sdf.parse("07/02/2022"), "Bom dia","Acordei feliz hoje!",new AuthorDTO(u1));
+
+        CommentDTO c1 = new CommentDTO("Boa viagem mano!", sdf.parse("07/02/2021"), new AuthorDTO(u1));
+        CommentDTO c2 = new CommentDTO("Aproveite.", sdf.parse("06/02/2021"), new AuthorDTO(u3));
+        CommentDTO c3 = new CommentDTO("Tenha um ótimo!", sdf.parse("05/02/2021"), new AuthorDTO(u1));
+
+        p1.setCommnets(Arrays.asList(c1,c2));
+        p2.setCommnets(Arrays.asList(c3));
 
         postRepository.saveAll(Arrays.asList(p1,p2));
 
