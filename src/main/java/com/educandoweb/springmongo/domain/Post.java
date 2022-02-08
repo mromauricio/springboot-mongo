@@ -1,7 +1,6 @@
 package com.educandoweb.springmongo.domain;
 
 import com.educandoweb.springmongo.dto.AuthorDTO;
-import com.educandoweb.springmongo.dto.UserDTO;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
