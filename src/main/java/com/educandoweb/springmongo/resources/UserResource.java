@@ -1,5 +1,6 @@
 package com.educandoweb.springmongo.resources;
 
+import com.educandoweb.springmongo.domain.Post;
 import com.educandoweb.springmongo.domain.User;
 import com.educandoweb.springmongo.dto.UserDTO;
 import com.educandoweb.springmongo.services.UserService;
@@ -51,5 +52,11 @@ public class UserResource {
         updatedUser.setId(id);
         service.update(updatedUser);
         return ResponseEntity.accepted().body(new UserDTO(updatedUser));
+    }
+
+    @GetMapping(value = "/{id}/posts")
+    public ResponseEntity<List<Post>> findPosts(@PathVariable String id){
+        User user = service.findById(id);
+        return ResponseEntity.ok().body(user.getPosts());
     }
 }
