@@ -47,4 +47,8 @@ public class PostService {
         return repository.save(existObj);
     }
 
+    public List<Post> findByTitle(String text){
+        return repository.findByTitleContainingIgnoreCase(text);
+    }
+
 }

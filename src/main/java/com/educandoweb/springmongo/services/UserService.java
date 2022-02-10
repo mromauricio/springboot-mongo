@@ -1,5 +1,6 @@
 package com.educandoweb.springmongo.services;
 
+import com.educandoweb.springmongo.domain.Post;
 import com.educandoweb.springmongo.domain.User;
 import com.educandoweb.springmongo.dto.UserDTO;
 import com.educandoweb.springmongo.respositories.UserRepository;
@@ -48,6 +49,5 @@ public class UserService {
     public User fromDTO(UserDTO objDto){
         return new User(objDto.getId(), objDto.getName(), objDto.getEmail());
     }
-
 
 }
